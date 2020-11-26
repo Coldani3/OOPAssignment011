@@ -3,21 +3,14 @@ using System.Collections.Generic;
 
 namespace OOPAssignment011
 {
-    public class Menu
+    public abstract class Menu
     {
         public List<Action> AvailableActions = new List<Action>();
         public Pet ActivePet;
         public Player CurrentPlayer;
 
-        public void Display()
-        {
-            //Display last
-            this.DisplaySelectMenu();
-        }
+        public abstract void HandleInput(ConsoleKeyInfo key);
+        public abstract void Display();
 
-        private void DisplaySelectMenu()
-        {
-
-        }
     }
 }

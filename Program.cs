@@ -8,6 +8,8 @@ namespace OOPAssignment011
     {
         public static readonly short TickRate = 20;
         public static bool Running = true;
+        public static Menu Menu = new MainMenu();
+        public static Player Player = new Player("John Smith");
         
         static void Main(string[] args)
         {
@@ -19,20 +21,25 @@ namespace OOPAssignment011
 
             while (Running)
             {
-                HandleInput(Console.ReadKey(true));
+                Menu.HandleInput(Console.ReadKey(true));
             }
+
+            Console.ReadKey();
         }
 
         public static void Tick()
         {
-            //Do stuff here
+            while (Running)
+            {
+                //Do stuff here
 
-            Thread.Sleep(1000 / TickRate);
+                Thread.Sleep(1000 / TickRate);
+            }
         }
 
         public static void HandleInput(ConsoleKeyInfo key)
         {
-
+            Menu.HandleInput(key);
         }
     }
 }
