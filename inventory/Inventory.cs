@@ -11,7 +11,12 @@ namespace OOPAssignment011
 
         public void Display(int xCoord, int yCoord)
         {
-
+            for (int i = 0; i < this.InventoryItems.Count; i++)
+            {
+                InventoryItem item = InventoryItems[i];
+                Console.SetCursorPosition(xCoord, yCoord + i);
+                Console.Write(item.GetItemType() + ": " + item.Name);
+            }
         }
 
         public void AddItem(InventoryItem item)

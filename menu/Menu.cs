@@ -11,6 +11,5 @@ namespace OOPAssignment011
 
         public abstract void HandleInput(ConsoleKeyInfo key);
         public abstract void Display();
-
     }
 }

@@ -40,7 +40,15 @@ namespace OOPAssignment011
 
         public void ChangeTemperature(float by)
         {
-            CurrentTemperature += by;
+            if ((this.CurrentTemperature > this.AmbientTemperature && this.CurrentTemperature + by < this.AmbientTemperature) 
+                || (this.CurrentTemperature < this.AmbientTemperature && this.CurrentTemperature + by > this.AmbientTemperature))
+            {
+                this.CurrentTemperature = this.AmbientTemperature;
+            }
+            else
+            {
+                CurrentTemperature += by;
+            }
         }
     }
 }
