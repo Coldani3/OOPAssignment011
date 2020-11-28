@@ -28,6 +28,8 @@ namespace OOPAssignment011
         public float HungerRate;
         public PetCapabilities Capabilities;
 
+        public Room Room;
+
         public Pet(string name, int maxHealth, float hunger, float hungerRate, int mood, PetCapabilities petCapabilities)
         {
             this.MaxHealth = maxHealth;

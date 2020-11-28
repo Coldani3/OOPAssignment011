@@ -32,6 +32,8 @@ namespace OOPAssignment011
             while (Running)
             {
                 //Do stuff here
+                Menu.ActivePet.Update();
+                
 
                 Thread.Sleep(1000 / TickRate);
             }

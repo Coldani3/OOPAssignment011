@@ -11,12 +11,12 @@ namespace OOPAssignment011
             this.Description = description;
         }
 
-        public virtual bool Execute()
+        public virtual bool Execute(Pet pet)
         {
-            return false;
+            return true;
         }
 
-        public virtual bool CanPerformAction()
+        public virtual bool CanPerformAction(Pet pet)
         {
             return true;
         }
