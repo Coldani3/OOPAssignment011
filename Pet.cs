@@ -7,20 +7,23 @@ namespace OOPAssignment011
 
         public string Name;
         public bool IsSick = false;
-        //Maxes out at 100
+        //Maxes out at 100, or peak happiness
         public int Mood;
         private int health;
-        public int Health { get => health; set 
-        { 
-            if (this.Health + value <= this.MaxHealth) 
-            {
-                this.health = this.Health = value;
+        public int Health { 
+            get => health; 
+            set 
+            { 
+                if (this.Health + value <= this.MaxHealth) 
+                {
+                    this.health = this.Health = value;
+                }
+                else
+                {
+                    this.health = this.MaxHealth;
+                }
             }
-            else
-            {
-                this.health = this.MaxHealth;
-            }
-        }}
+        }
         public int MaxHealth { get; private set; }
         //Maxes out at 100, if it reaches 100 (most hunger) it takes damage. Rounded down whenever displayed.
         public float Hunger;
