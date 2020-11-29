@@ -7,7 +7,7 @@ namespace OOPAssignment011
         public int MaxUses { get; private set; }
         public int Uses;
 
-        public Toy(float cost, string name, string description, int maxUses, Func<Pet, bool> use) : base(cost, name, description)
+        public Toy(int cost, string name, string description, int maxUses, Func<Pet, bool> use) : base(cost, name, description)
         {
             this.MaxUses = maxUses;
             this.Uses = maxUses;

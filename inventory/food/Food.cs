@@ -4,7 +4,7 @@ namespace OOPAssignment011
     {
         public int HealthRestored { get; private set; }
 
-        public Food(int healthRestored, float cost, string name, string description) : base(cost, name, description)
+        public Food(int healthRestored, int cost, string name, string description) : base(cost, name, description)
         {
             this.HealthRestored = healthRestored;
         }

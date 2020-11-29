@@ -4,14 +4,13 @@ using System.Linq;
 
 namespace OOPAssignment011
 {
-    public class MainMenu : Menu
+    public class MainMenu : ArrowNavigableMenu
     {
-        private int selectedIndex = 0;
         public override void Display()
         {
             this.DisplayPetStats();
             this.DisplaySelectMenu();
-            this.DisplayActionDescription(AvailableActions[selectedIndex].Description);
+            this.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
         }
 
         private void DisplaySelectMenu()
@@ -21,7 +20,17 @@ namespace OOPAssignment011
             foreach (Action action in this.AvailableActions)
             {
                 int actionNum = this.AvailableActions.IndexOf(action) + 1;
+
+                if (this.SelectedIndex + 1 == actionNum)
+                {
+                    Console.BackgroundColor = ConsoleColor.White;
+                    Console.ForegroundColor = ConsoleColor.Red;
+                }
+
                 Console.WriteLine($"{actionNum}. {action.Name}");
+
+                Console.BackgroundColor = ConsoleColor.Black;
+                Console.ForegroundColor = ConsoleColor.White;
             }
 
             for (int i = 0; i < this.AvailableActions.Count + 4; i++)
@@ -53,24 +62,6 @@ namespace OOPAssignment011
         private void DisplayPetStats()
         {
 
-        }
-
-        public override void HandleInput(ConsoleKeyInfo key)
-        {
-            if (key.Key == ConsoleKey.UpArrow)
-            {
-                if (selectedIndex < this.AvailableActions.Count)
-                {
-                    this.selectedIndex++;
-                }
-            }
-            else if (key.Key == ConsoleKey.DownArrow)
-            {
-                if (selectedIndex > 0)
-                {
-                    this.selectedIndex--;
-                }
-            }
         }
     }
 }
