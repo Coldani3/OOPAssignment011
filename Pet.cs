@@ -32,6 +32,7 @@ namespace OOPAssignment011
         public PetCapabilities Capabilities;
 
         public Room Room;
+        public Player Owner;
 
         public Pet(string name, int maxHealth, float hunger, float hungerRate, int mood, PetCapabilities petCapabilities)
         {

@@ -13,6 +13,14 @@ namespace OOPAssignment011
             this.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
         }
 
+        public override void Select(int selectedIndex)
+        {
+            if (this.AvailableActions[this.SelectedIndex].CanPerformAction(this.ActivePet))
+            {
+                this.AvailableActions[this.SelectedIndex].Execute(this.ActivePet);
+            }
+        }
+
         private void DisplaySelectMenu()
         {
             int width = this.AvailableActions.Max((x) => x.Name.Length) + 2;

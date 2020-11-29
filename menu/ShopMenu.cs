@@ -13,5 +13,13 @@ namespace OOPAssignment011
         {
             throw new NotImplementedException();
         }
+
+        public override void Select(int selectedIndex)
+        {
+            if (this.AvailableActions[selectedIndex].CanPerformAction(this.ActivePet))
+            {
+                this.AvailableActions[selectedIndex].Execute(this.ActivePet);
+            }
+        }
     }
 }
