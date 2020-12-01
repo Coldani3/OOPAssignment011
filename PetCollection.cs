@@ -5,6 +5,7 @@ namespace OOPAssignment011
     public class PetCollection
     {
         public List<Pet> Pets = new List<Pet>();
+        public Pet SelectedPet;
 
         public void AddPet(Pet pet)
         {

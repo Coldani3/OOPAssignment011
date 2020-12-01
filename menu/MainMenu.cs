@@ -6,6 +6,12 @@ namespace OOPAssignment011
 {
     public class MainMenu : ArrowNavigableMenu
     {
+        public MainMenu()
+        {
+            this.AvailableActions.Add(new ActionQuit("Quit", "Quit out of the simulator."));
+            this.AvailableActions.Add(new ActionPlay("Play", "Play with your pet!"));
+        }
+
         public override void Display()
         {
             this.DisplayPetStats();
@@ -15,21 +21,25 @@ namespace OOPAssignment011
 
         public override void Select(int selectedIndex)
         {
-            if (this.AvailableActions[this.SelectedIndex].CanPerformAction(this.ActivePet))
+            if (selectedIndex < this.AvailableActions.Count)
             {
-                this.AvailableActions[this.SelectedIndex].Execute(this.ActivePet);
+                if (this.AvailableActions[this.SelectedIndex].CanPerformAction(this.ActivePet))
+                {
+                    this.AvailableActions[this.SelectedIndex].Execute(this.ActivePet);
+                }
             }
         }
 
         private void DisplaySelectMenu()
         {
-            int width = this.AvailableActions.Max((x) => x.Name.Length) + 2;
+            int width = this.AvailableActions.Max((x) => x.Name.Length) + 5;
             Console.SetCursorPosition(0, 3);
             foreach (Action action in this.AvailableActions)
             {
                 int actionNum = this.AvailableActions.IndexOf(action) + 1;
+                bool selected = this.SelectedIndex + 1 == actionNum;
 
-                if (this.SelectedIndex + 1 == actionNum)
+                if (selected)
                 {
                     Console.BackgroundColor = ConsoleColor.White;
                     Console.ForegroundColor = ConsoleColor.Red;
@@ -37,21 +47,22 @@ namespace OOPAssignment011
 
                 Console.WriteLine($"{actionNum}. {action.Name}");
 
-                Console.BackgroundColor = ConsoleColor.Black;
-                Console.ForegroundColor = ConsoleColor.White;
+                if (selected)
+                {
+                    Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ForegroundColor = ConsoleColor.White;
+                }
             }
 
-            for (int i = 0; i < this.AvailableActions.Count + 4; i++)
+            for (int i = 2; i < this.AvailableActions.Count + 6; i++)
             {
                 Console.SetCursorPosition(width, i);
-                Console.Write("|");
+                Console.Write('│');
             }
 
             Console.SetCursorPosition(0, this.AvailableActions.Count + 5);
-            for (int i = 0; i < width; i++)
-            {
-                Console.Write("-");
-            }
+
+            Console.WriteLine(new String('_', width));
         }
         
         //Display bar at top with Action description on MAIN
@@ -61,15 +72,14 @@ namespace OOPAssignment011
             Console.Write(description);
             Console.SetCursorPosition(0, 1);
 
-            for (int i = 0; i < Console.WindowWidth; i++)
-            {
-                Console.Write("-");
-            }
+            Console.WriteLine(new String('_', Console.WindowWidth));
         }
 
         private void DisplayPetStats()
         {
-
+            //Console.SetCursorPosition();
+            //17 wide (largest is 15 wide)
+            Console.Write($"Health: {this.ActivePet.Health}/{this.ActivePet.MaxHealth}");
         }
     }
 }

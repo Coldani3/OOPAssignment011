@@ -8,7 +8,7 @@ namespace OOPAssignment011
 
         public override void HandleInput(ConsoleKeyInfo key)
         {
-            if (key.Key == ConsoleKey.UpArrow)
+            if (key.Key == ConsoleKey.DownArrow)
             {
                 if ((key.Modifiers & ConsoleModifiers.Control) != 0)
                 {
@@ -19,7 +19,7 @@ namespace OOPAssignment011
                     this.SelectedIndex++;
                 }
             }
-            else if (key.Key == ConsoleKey.DownArrow)
+            else if (key.Key == ConsoleKey.UpArrow)
             {
                 if ((key.Modifiers & ConsoleModifiers.Control) != 0)
                 {
