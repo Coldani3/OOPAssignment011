@@ -11,6 +11,9 @@ namespace OOPAssignment011
             this.AvailableActions.Add(new ActionPlay());
             ShopMenu shopMenu = new ShopMenu(Program.Player);
             this.AvailableActions.Add(new ActionGoToMenu("Shop", "Purchase things in ye olde shoppe.", shopMenu));
+            //Inventory menu item
+            //Change pet
+            //Change room
             this.AvailableActions.Add(new ActionQuit());
         }
 
