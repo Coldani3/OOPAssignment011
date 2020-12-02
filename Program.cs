@@ -12,8 +12,17 @@ namespace OOPAssignment011
         public static Menu Menu = new MainMenu();
         //Save so that we can switch back to this easily
         public static Menu MainMenu;
+
+        public static char HorizontalLine = '─';
+        public static char VerticalLine = '│';
         
+        public static char BottomRightCorner = '┘';
         
+        public static char BottomLeftCorner = '└';
+        public static char TopLeftCorner = '┌';
+        public static char TopRightCorner = '┘';
+        public static char HorizontalVertJoiner = '┬';
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black;
@@ -120,11 +129,16 @@ namespace OOPAssignment011
         //Display bar at top with Action description
         public static void DisplayActionDescription(string description)
         {
+            // Console.BackgroundColor = ConsoleColor.Gray;
+            // Console.ForegroundColor = ConsoleColor.Blue;
+            Console.SetCursorPosition(0, 0);
+            Console.Write(new String(' ', Console.WindowWidth));
             Console.SetCursorPosition(0, 0);
             Console.Write(description);
+            Program.ResetConsoleColours();
             Console.SetCursorPosition(0, 1);
-
-            Console.WriteLine(new String('_', Console.WindowWidth));
+            Console.WriteLine(new String(Program.HorizontalLine, Console.WindowWidth));
+            Console.ResetColor();
         }
     }
 }

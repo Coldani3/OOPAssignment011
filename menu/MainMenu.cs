@@ -20,10 +20,10 @@ namespace OOPAssignment011
 
         public override void Display()
         {
+            Program.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
             this.DisplayPetStats();
             this.DisplaySelectMenu();
             this.DisplayRoomStatus();
-            Program.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
         }
 
         public override void Select(int selectedIndex)
@@ -59,22 +59,27 @@ namespace OOPAssignment011
                 }
             }
 
-            for (int i = 2; i < this.AvailableActions.Count + 6; i++)
+            for (int i = 2; i < this.AvailableActions.Count + 5; i++)
             {
                 Console.SetCursorPosition(width, i);
-                Console.Write('│');
+                Console.Write(Program.VerticalLine);
             }
+
+            Console.SetCursorPosition(width, 1);
+            Console.Write(Program.HorizontalVertJoiner);
+
+            Console.SetCursorPosition(width, this.AvailableActions.Count + 5);
+            Console.Write(Program.BottomRightCorner);
 
             Console.SetCursorPosition(0, this.AvailableActions.Count + 5);
 
-            Console.WriteLine(new String('_', width));
+            Console.WriteLine(new String(Program.HorizontalLine, width));
         }
         
         
 
         private void DisplayPetStats()
         {
-            //Console.SetCursorPosition();
             //17 wide (largest is 15 wide)
             Console.SetCursorPosition(Console.WindowWidth - 16, 2);
             Console.Write(this.ActivePet.Name);
@@ -99,14 +104,19 @@ namespace OOPAssignment011
             Console.SetCursorPosition(Console.WindowWidth - 16, 6);
             Console.Write(this.ActivePet.IsSick ? "Status: Sick": "Status: Healthy");
 
-            for (int i = 0; i < 6; i++)
+            for (int i = 0; i < 5; i++)
             {
                 Console.SetCursorPosition(Console.WindowWidth - 17, 2 + i);
-                Console.Write("│");
+                Console.Write(Program.VerticalLine);
             }
+            Console.SetCursorPosition(Console.WindowWidth - 17, 1);
+            Console.Write(Program.HorizontalVertJoiner);
+
+            Console.SetCursorPosition(Console.WindowWidth - 17, 7);
+            Console.Write(Program.BottomLeftCorner);
             
             Console.SetCursorPosition(Console.WindowWidth - 16, 7);
-            Console.Write(new String('_', 16));
+            Console.Write(new String(Program.HorizontalLine, 16));
         }
 
         private void DisplayRoomStatus()
