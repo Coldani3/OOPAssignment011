@@ -79,7 +79,26 @@ namespace OOPAssignment011
         {
             //Console.SetCursorPosition();
             //17 wide (largest is 15 wide)
+            Console.SetCursorPosition(Console.WindowWidth - 16, 2);
+            Console.Write(this.ActivePet.Name);
+            Console.SetCursorPosition(Console.WindowWidth - 16, 3);
             Console.Write($"Health: {this.ActivePet.Health}/{this.ActivePet.MaxHealth}");
+            Console.SetCursorPosition(Console.WindowWidth - 16, 4);
+            int hungerRounded = (int) Math.Floor(this.ActivePet.Hunger);
+            Console.Write($"Hunger: {hungerRounded}/100");
+            Console.SetCursorPosition(Console.WindowWidth - 16, 5);
+            Console.Write($"Mood: {this.ActivePet.Mood}/100");
+            Console.SetCursorPosition(Console.WindowWidth - 16, 6);
+            Console.Write(this.ActivePet.IsSick ? "Status: Sick": "Status: Healthy");
+
+            for (int i = 0; i < 6; i++)
+            {
+                Console.SetCursorPosition(Console.WindowWidth - 17, 2 + i);
+                Console.Write("│");
+            }
+            
+            Console.SetCursorPosition(Console.WindowWidth - 16, 7);
+            Console.Write(new String('_', 16));
         }
     }
 }
