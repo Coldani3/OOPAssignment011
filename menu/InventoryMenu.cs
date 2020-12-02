@@ -5,18 +5,42 @@ namespace OOPAssignment011
     public class InventoryMenu : ArrowNavigableMenu
     {
         private int VerticalOffset = 0;
+        private Action mainMenuAction = new ActionGoToMainMenu();
 
         public InventoryMenu()
         {
             this.UpdateInventory();
+            this.AvailableActions.Add(new ActionGoToMainMenu());
         }
 
         public override void Display()
         {
-            Program.DisplayActionDescription(this.AvailableActions[this.SelectedIndex].Description);
-            Console.SetCursorPosition(0, 3);
+            this.UpdateInventory();
+            this.AvailableActions.Add(mainMenuAction);
 
-            int itemsCanBeDisplayed = Console.WindowHeight - 2;
+            if (this.AvailableActions.Count > 0)
+            {
+                Program.DisplayActionDescription(this.AvailableActions[this.SelectedIndex].Description);
+                Console.SetCursorPosition(0, 3);
+
+                int itemsCanBeDisplayed = (Console.WindowHeight - 4) < this.AvailableActions.Count ? Console.WindowHeight - 4 : this.AvailableActions.Count;
+
+                for (int i = this.VerticalOffset; i < itemsCanBeDisplayed; i++)
+                {
+                    if (i == this.SelectedIndex)
+                    {
+                        Program.StartSelectWrite();
+                    }
+
+                    Console.WriteLine($"{this.AvailableActions[i]}");
+
+                    Program.ResetConsoleColours();
+                }
+            }
+            else
+            {
+                Console.WriteLine("Your inventory is empty!");
+            }
         }
 
         public override void Select(int selectedIndex)
@@ -48,7 +72,7 @@ namespace OOPAssignment011
             }
             else
             {
-                
+
             }
         }
     }

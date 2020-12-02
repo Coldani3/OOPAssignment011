@@ -26,6 +26,9 @@ namespace OOPAssignment011
             Player.Pets.SelectedPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true));
             Player.Pets.SelectedPet.Room = startRoom;
             Menu.ActivePet = Player.Pets.SelectedPet;
+            // Player.PlayerInventory.AddItem(new ToyBall());
+            Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new ToyBall());
             MainMenu = Menu;
 
             //Input loop here
