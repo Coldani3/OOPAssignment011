@@ -8,8 +8,10 @@ namespace OOPAssignment011
     {
         public MainMenu()
         {
-            this.AvailableActions.Add(new ActionQuit());
             this.AvailableActions.Add(new ActionPlay());
+            ShopMenu shopMenu = new ShopMenu(Program.Player);
+            this.AvailableActions.Add(new ActionGoToMenu("Shop", "Purchase things in ye olde shoppe.", shopMenu));
+            this.AvailableActions.Add(new ActionQuit());
         }
 
         public override void Display()
