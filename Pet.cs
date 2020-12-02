@@ -1,3 +1,5 @@
+using System;
+
 namespace OOPAssignment011
 {
     public class Pet : IUpdating
@@ -8,7 +10,7 @@ namespace OOPAssignment011
         public string Name;
         public bool IsSick = false;
         //Maxes out at 100, or peak happiness
-        public int Mood;
+        public float Mood;
         private int health;
         public int Health { 
             get => health; 
@@ -34,7 +36,7 @@ namespace OOPAssignment011
         public Room Room;
         public Player Owner;
 
-        public Pet(string name, int maxHealth, float hunger, float hungerRate, int mood, PetCapabilities petCapabilities)
+        public Pet(string name, int maxHealth, float hunger, float hungerRate, float mood, PetCapabilities petCapabilities)
         {
             this.MaxHealth = maxHealth;
             this.health = maxHealth;
@@ -48,6 +50,7 @@ namespace OOPAssignment011
         public void Update()
         {
             this.Hunger += (HungerRate / Program.TickRate);
+            this.Mood -= (float) (1.0f / Program.TickRate);
         }
     }
 }

@@ -17,7 +17,7 @@ namespace OOPAssignment011
             Console.CursorVisible = false;
             Task mainLoopTask = new Task(Tick);
             mainLoopTask.Start();
-            Player.Pets.SelectedPet = new Pet("John Doe", 100, 0, 0, 100, new PetCapabilities(true, true, true));
+            Player.Pets.SelectedPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true));
             Menu.ActivePet = Player.Pets.SelectedPet;
 
             //Input loop here

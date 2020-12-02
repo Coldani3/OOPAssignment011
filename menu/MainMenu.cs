@@ -8,8 +8,8 @@ namespace OOPAssignment011
     {
         public MainMenu()
         {
-            this.AvailableActions.Add(new ActionQuit("Quit", "Quit out of the simulator."));
-            this.AvailableActions.Add(new ActionPlay("Play", "Play with your pet!"));
+            this.AvailableActions.Add(new ActionQuit());
+            this.AvailableActions.Add(new ActionPlay());
         }
 
         public override void Display()
@@ -87,7 +87,8 @@ namespace OOPAssignment011
             int hungerRounded = (int) Math.Floor(this.ActivePet.Hunger);
             Console.Write($"Hunger: {hungerRounded}/100");
             Console.SetCursorPosition(Console.WindowWidth - 16, 5);
-            Console.Write($"Mood: {this.ActivePet.Mood}/100");
+            int moodRounded = (int) Math.Floor(this.ActivePet.Mood);
+            Console.Write($"Mood: {moodRounded}/100");
             Console.SetCursorPosition(Console.WindowWidth - 16, 6);
             Console.Write(this.ActivePet.IsSick ? "Status: Sick": "Status: Healthy");
 

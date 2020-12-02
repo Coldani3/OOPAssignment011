@@ -4,7 +4,7 @@ namespace OOPAssignment011
 {
     public class ActionPlay : Action
     {
-        public ActionPlay(string name, string description) : base(name, description)
+        public ActionPlay() : base("Play", "Play with your pet!")
         {
 
         }
@@ -12,8 +12,16 @@ namespace OOPAssignment011
         public override bool Execute(Pet pet)
         {
             //TODO: varying play bonuses based on a selected activity
-            pet.Mood += 30;
-            return base.Execute(pet);
+            if (pet.Mood + 30 > 100)
+            {
+                pet.Mood = 100;
+            }
+            else
+            {
+                pet.Mood += 30;
+            }
+            pet.Hunger += 10;
+            return true;
         }
 
         public override bool CanPerformAction(Pet pet)
