@@ -10,15 +10,37 @@ namespace OOPAssignment011
         public string Name;
         public bool IsSick = false;
         //Maxes out at 100, or peak happiness
-        public float Mood;
-        private int health;
-        public int Health { 
-            get => health; 
+        private float mood;
+        public float Mood { 
+            get => this.mood; 
             set 
             { 
-                if (this.Health + value <= this.MaxHealth) 
+                if (value <= 100) 
                 {
-                    this.health = this.Health = value;
+                    this.mood = value;
+                }
+                else if (value < 0)
+                {
+                    this.mood = 0;
+                }
+                else
+                {
+                    this.mood = this.MaxHealth;
+                }
+            }
+        }
+        private int health;
+        public int Health { 
+            get => this.health; 
+            set 
+            { 
+                if (value <= this.MaxHealth) 
+                {
+                    this.health = value;
+                }
+                else if (value < 0)
+                {
+                    this.mood = 0;
                 }
                 else
                 {
@@ -28,7 +50,26 @@ namespace OOPAssignment011
         }
         public int MaxHealth { get; private set; }
         //Maxes out at 100, if it reaches 100 (most hunger) it takes damage. Rounded down whenever displayed.
-        public float Hunger;
+        private float hunger;
+        public float Hunger
+        {
+            get => this.hunger; 
+            set 
+            { 
+                if (value <= 100)
+                {
+                    this.hunger = value;
+                }
+                else if (value < 0)
+                {
+                    this.hunger = 0;
+                }
+                else
+                {
+                    this.hunger = 100;
+                }
+            }
+        }
         //Amount of hunger to increase per second
         public float HungerRate;
         public PetCapabilities Capabilities;

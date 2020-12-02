@@ -12,14 +12,7 @@ namespace OOPAssignment011
         public override bool Execute(Pet pet)
         {
             //TODO: varying play bonuses based on a selected activity
-            if (pet.Mood + 30 > 100)
-            {
-                pet.Mood = 100;
-            }
-            else
-            {
-                pet.Mood += 30;
-            }
+            pet.Mood += 30;
             pet.Hunger += 10;
             return true;
         }

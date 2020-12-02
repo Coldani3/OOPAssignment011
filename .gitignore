@@ -1,4 +1,5 @@
-obj
+obj/**
+obj/**/*
 bin
 .vscode
 OOPAssignment011.csproj

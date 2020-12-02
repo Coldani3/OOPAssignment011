@@ -21,6 +21,7 @@ namespace OOPAssignment011
         {
             this.DisplayPetStats();
             this.DisplaySelectMenu();
+            this.DisplayRoomStatus();
             this.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
         }
 
@@ -90,7 +91,24 @@ namespace OOPAssignment011
             Console.Write($"Health: {this.ActivePet.Health}/{this.ActivePet.MaxHealth}");
             Console.SetCursorPosition(Console.WindowWidth - 16, 4);
             int hungerRounded = (int) Math.Floor(this.ActivePet.Hunger);
+
+            if (hungerRounded >= 30)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            if (hungerRounded >= 70)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+            if (hungerRounded >= 90)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+
             Console.Write($"Hunger: {hungerRounded}/100");
+
+            Console.ForegroundColor = ConsoleColor.White;
+
             Console.SetCursorPosition(Console.WindowWidth - 16, 5);
             int moodRounded = (int) Math.Floor(this.ActivePet.Mood);
             Console.Write($"Mood: {moodRounded}/100");
@@ -105,6 +123,15 @@ namespace OOPAssignment011
             
             Console.SetCursorPosition(Console.WindowWidth - 16, 7);
             Console.Write(new String('_', 16));
+        }
+
+        private void DisplayRoomStatus()
+        {
+            //Console.SetCursorPosition();
+            Console.SetCursorPosition(Console.WindowWidth - 16, 10);
+            //TODO: Make text change colours based on pet's preference
+            int roundedRoomTemp = (int) Math.Floor(this.ActivePet.Room.CurrentTemperature);
+            Console.Write($"°C: {roundedRoomTemp}");
         }
     }
 }

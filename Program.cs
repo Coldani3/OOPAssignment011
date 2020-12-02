@@ -15,11 +15,15 @@ namespace OOPAssignment011
         
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();
             Console.CursorVisible = false;
             Task mainLoopTask = new Task(Tick);
             mainLoopTask.Start();
+            Room startRoom = new Room(25, 18);
             Player.Pets.SelectedPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true));
+            Player.Pets.SelectedPet.Room = startRoom;
             Menu.ActivePet = Player.Pets.SelectedPet;
             MainMenu = Menu;
 
@@ -45,6 +49,7 @@ namespace OOPAssignment011
                 
                 //Do stuff here
                 Menu.ActivePet.Update();
+                Menu.ActivePet.Room.Update();
                 
                 Thread.Sleep(1000 / TickRate);
             }
