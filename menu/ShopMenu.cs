@@ -7,6 +7,7 @@ namespace OOPAssignment011
         public ShopMenu()
         {
             this.AvailableActions.Add(new ActionShopItem(new ToyBall()));
+            this.AvailableActions.Add(new ActionShopItem(new FoodSteak()));
             this.AvailableActions.Add(new ActionGoToMainMenu());
         }
 

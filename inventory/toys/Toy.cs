@@ -7,7 +7,6 @@ namespace OOPAssignment011
         public Toy(int cost, string name, string description, int maxUses) : base(cost, name, description)
         {
             this.MaxUses = maxUses;
-            this.Uses = maxUses;
         }
 
         public override string GetItemType()

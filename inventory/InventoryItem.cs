@@ -28,5 +28,17 @@ namespace OOPAssignment011
 
         //ID that defines if it is a Toy, Food or Medicine object.
         public abstract string GetItemType();
+
+        public override string ToString()
+        {
+            string result = $"{this.Name}";
+
+            if (this.Uses > 0)
+            {
+                result += $" {this.MaxUses - this.Uses}/{this.MaxUses}";
+            }
+
+            return result;
+        }
     }
 }

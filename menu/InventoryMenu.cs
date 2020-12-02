@@ -7,25 +7,25 @@ namespace OOPAssignment011
         private int VerticalOffset = 0;
         private Action mainMenuAction = new ActionGoToMainMenu();
 
+        private int itemsCanBeDisplayed;
+
         public InventoryMenu()
         {
             this.UpdateInventory();
-            this.AvailableActions.Add(new ActionGoToMainMenu());
         }
 
         public override void Display()
         {
             this.UpdateInventory();
-            this.AvailableActions.Add(mainMenuAction);
 
             if (this.AvailableActions.Count > 0)
             {
                 Program.DisplayActionDescription(this.AvailableActions[this.SelectedIndex].Description);
                 Console.SetCursorPosition(0, 3);
 
-                int itemsCanBeDisplayed = (Console.WindowHeight - 4) < this.AvailableActions.Count ? Console.WindowHeight - 4 : this.AvailableActions.Count;
+                itemsCanBeDisplayed = (Console.WindowHeight - 4) < this.AvailableActions.Count ? Console.WindowHeight - 4 : this.AvailableActions.Count;
 
-                for (int i = this.VerticalOffset; i < itemsCanBeDisplayed; i++)
+                for (int i = this.VerticalOffset; i < this.itemsCanBeDisplayed; i++)
                 {
                     if (i == this.SelectedIndex)
                     {
@@ -48,6 +48,7 @@ namespace OOPAssignment011
             if (this.AvailableActions[selectedIndex].CanPerformAction(this.ActivePet))
             {
                 this.AvailableActions[selectedIndex].Execute(this.ActivePet);
+                this.UpdateInventory();
             }
         }
 
@@ -62,17 +63,25 @@ namespace OOPAssignment011
                     this.AvailableActions.Add(new ActionUseItem(item));
                 }
             }
+
+            this.AvailableActions.Add(mainMenuAction);
         }
 
         public override void OnArrowNavigate(ConsoleKeyInfo key)
         {
             if (key.Key == ConsoleKey.UpArrow)
             {
-
+                if (this.VerticalOffset > 0 && this.SelectedIndex == this.VerticalOffset)
+                {
+                    this.VerticalOffset--;
+                }
             }
             else
             {
-
+                if (this.SelectedIndex - this.VerticalOffset == this.itemsCanBeDisplayed)
+                {
+                    this.VerticalOffset++;
+                }
             }
         }
     }

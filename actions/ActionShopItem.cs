@@ -1,3 +1,5 @@
+using System;
+
 namespace OOPAssignment011
 {
     public class ActionShopItem : Action
@@ -7,10 +9,11 @@ namespace OOPAssignment011
         {
             this.item = item;
         }
+
         public override bool Execute(Pet pet)
         {
             Program.Player.PlayerInventory.Coins -= item.Cost;
-            Program.Player.PlayerInventory.AddItem(this.item);
+            Program.Player.PlayerInventory.AddItem((InventoryItem) Activator.CreateInstance(item.GetType()));
             return false;
         }
 

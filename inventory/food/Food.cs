@@ -8,6 +8,8 @@ namespace OOPAssignment011
         public Food(int healthRestored, int hungerRestored, int cost, string name, string description) : base(cost, name, description)
         {
             this.HealthRestored = healthRestored;
+            this.HungerRestored = hungerRestored;
+            this.MaxUses = 1;
         }
 
         public override string GetItemType()

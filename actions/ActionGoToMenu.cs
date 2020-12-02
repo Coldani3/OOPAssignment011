@@ -10,7 +10,7 @@ namespace OOPAssignment011
 
         public override bool Execute(Pet pet)
         {
-            this.menu.ActivePet = Program.Menu.ActivePet;
+            this.menu.ActivePet = pet;
             Program.Menu = this.menu;
             return true;
         }

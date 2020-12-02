@@ -28,7 +28,10 @@ namespace OOPAssignment011
             Menu.ActivePet = Player.Pets.SelectedPet;
             // Player.PlayerInventory.AddItem(new ToyBall());
             Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new ToyBall());
+            Player.PlayerInventory.Coins = 1000;
             MainMenu = Menu;
 
             //Input loop here
