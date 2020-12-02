@@ -22,7 +22,7 @@ namespace OOPAssignment011
             this.DisplayPetStats();
             this.DisplaySelectMenu();
             this.DisplayRoomStatus();
-            this.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
+            Program.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
         }
 
         public override void Select(int selectedIndex)
@@ -47,16 +47,14 @@ namespace OOPAssignment011
 
                 if (selected)
                 {
-                    Console.BackgroundColor = ConsoleColor.White;
-                    Console.ForegroundColor = ConsoleColor.Red;
+                    Program.StartSelectWrite();
                 }
 
-                Console.WriteLine($"{actionNum}. {action.Name}");
+                Console.WriteLine($"{actionNum}. {action.ToString()}");
 
                 if (selected)
                 {
-                    Console.BackgroundColor = ConsoleColor.Black;
-                    Console.ForegroundColor = ConsoleColor.White;
+                    Program.ResetConsoleColours();
                 }
             }
 
@@ -71,15 +69,7 @@ namespace OOPAssignment011
             Console.WriteLine(new String('_', width));
         }
         
-        //Display bar at top with Action description on MAIN
-        private void DisplayActionDescription(string description)
-        {
-            Console.SetCursorPosition(0, 0);
-            Console.Write(description);
-            Console.SetCursorPosition(0, 1);
-
-            Console.WriteLine(new String('_', Console.WindowWidth));
-        }
+        
 
         private void DisplayPetStats()
         {
@@ -88,30 +78,23 @@ namespace OOPAssignment011
             Console.SetCursorPosition(Console.WindowWidth - 16, 2);
             Console.Write(this.ActivePet.Name);
             Console.SetCursorPosition(Console.WindowWidth - 16, 3);
+            Program.ChangeColorOnPositiveStat((this.ActivePet.Health / this.ActivePet.MaxHealth) * 100);
             Console.Write($"Health: {this.ActivePet.Health}/{this.ActivePet.MaxHealth}");
             Console.SetCursorPosition(Console.WindowWidth - 16, 4);
+
             int hungerRounded = (int) Math.Floor(this.ActivePet.Hunger);
-
-            if (hungerRounded >= 30)
-            {
-                Console.ForegroundColor = ConsoleColor.Yellow;
-            }
-            if (hungerRounded >= 70)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkYellow;
-            }
-            if (hungerRounded >= 90)
-            {
-                Console.ForegroundColor = ConsoleColor.Red;
-            }
-
+            Program.ChangeColorOnNegativeStat(hungerRounded);
             Console.Write($"Hunger: {hungerRounded}/100");
-
             Console.ForegroundColor = ConsoleColor.White;
 
             Console.SetCursorPosition(Console.WindowWidth - 16, 5);
+
             int moodRounded = (int) Math.Floor(this.ActivePet.Mood);
+            Program.ChangeColorOnPositiveStat(moodRounded);
+
             Console.Write($"Mood: {moodRounded}/100");
+            Console.ForegroundColor = ConsoleColor.White;
+
             Console.SetCursorPosition(Console.WindowWidth - 16, 6);
             Console.Write(this.ActivePet.IsSick ? "Status: Sick": "Status: Healthy");
 

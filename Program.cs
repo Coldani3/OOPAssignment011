@@ -64,5 +64,59 @@ namespace OOPAssignment011
         {
             Menu = MainMenu;
         }
+
+        public static void ChangeColorOnNegativeStat(float stat)
+        {
+            if (stat >= 30)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            if (stat >= 70)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+            if (stat >= 90)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+        }
+
+        public static void ChangeColorOnPositiveStat(float stat)
+        {
+            if (stat <= 90)
+            {
+                Console.ForegroundColor = ConsoleColor.Yellow;
+            }
+            if (stat <= 50)
+            {
+                Console.ForegroundColor = ConsoleColor.DarkYellow;
+            }
+            if (stat <= 30)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+            }
+        }
+
+        public static void StartSelectWrite()
+        {
+            Console.BackgroundColor = ConsoleColor.White;
+            Console.ForegroundColor = ConsoleColor.Red;
+        }
+
+        public static void ResetConsoleColours()
+        {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.White;
+        }
+
+        //Display bar at top with Action description
+        public static void DisplayActionDescription(string description)
+        {
+            Console.SetCursorPosition(0, 0);
+            Console.Write(description);
+            Console.SetCursorPosition(0, 1);
+
+            Console.WriteLine(new String('_', Console.WindowWidth));
+        }
     }
 }

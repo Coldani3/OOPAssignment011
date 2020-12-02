@@ -17,5 +17,10 @@ namespace OOPAssignment011
         {
             return pet.Owner.PlayerInventory.Coins >= item.Cost;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Name} - {this.item.Cost}";
+        }
     }
 }

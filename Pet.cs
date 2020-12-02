@@ -15,17 +15,17 @@ namespace OOPAssignment011
             get => this.mood; 
             set 
             { 
-                if (value <= 100) 
+                if (value > 100) 
                 {
-                    this.mood = value;
+                    this.mood = 100;
                 }
-                else if (value < 0)
+                else if (value <= 0)
                 {
                     this.mood = 0;
                 }
                 else
                 {
-                    this.mood = this.MaxHealth;
+                    this.mood = value;
                 }
             }
         }
@@ -34,9 +34,9 @@ namespace OOPAssignment011
             get => this.health; 
             set 
             { 
-                if (value <= this.MaxHealth) 
+                if (value > this.MaxHealth) 
                 {
-                    this.health = value;
+                    this.health = this.MaxHealth;
                 }
                 else if (value < 0)
                 {
@@ -44,7 +44,7 @@ namespace OOPAssignment011
                 }
                 else
                 {
-                    this.health = this.MaxHealth;
+                    this.health = value;
                 }
             }
         }
@@ -56,9 +56,9 @@ namespace OOPAssignment011
             get => this.hunger; 
             set 
             { 
-                if (value <= 100)
+                if (value > 100)
                 {
-                    this.hunger = value;
+                    this.hunger = 100;
                 }
                 else if (value < 0)
                 {
@@ -66,7 +66,7 @@ namespace OOPAssignment011
                 }
                 else
                 {
-                    this.hunger = 100;
+                    this.hunger = value;
                 }
             }
         }
