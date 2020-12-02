@@ -16,6 +16,7 @@ namespace OOPAssignment011
 
         public override bool Use(Pet pet)
         {
+            base.Use(pet);
             pet.Health += this.HealthRestored;
             return true;
         }

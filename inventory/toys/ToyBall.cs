@@ -2,7 +2,7 @@ namespace OOPAssignment011
 {
     public class ToyBall : Toy
     {
-        public ToyBall() : base(200, "Ball", "A bouncy ball your pet can play with! Lasts a good while.", 10)
+        public ToyBall() : base(150 * Program.TickRate, "Ball", "A bouncy ball your pet can play with! Can survive 10 uses.", 10)
         {
 
         }

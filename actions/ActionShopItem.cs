@@ -9,18 +9,19 @@ namespace OOPAssignment011
         }
         public override bool Execute(Pet pet)
         {
-            pet.Owner.PlayerInventory.Coins -= item.Cost;
+            Program.Player.PlayerInventory.Coins -= item.Cost;
+            Program.Player.PlayerInventory.AddItem(this.item);
             return false;
         }
 
         public override bool CanPerformAction(Pet pet)
         {
-            return pet.Owner.PlayerInventory.Coins >= item.Cost;
+            return Program.Player.PlayerInventory.Coins >= item.Cost;
         }
 
         public override string ToString()
         {
-            return $"{this.Name} - {this.item.Cost}";
+            return $"{this.Name} - {this.item.Cost} Coins";
         }
     }
 }

@@ -8,10 +8,11 @@ namespace OOPAssignment011
     {
         public static readonly short TickRate = 10;
         public static bool Running = true;
+        public static Player Player = new Player("John Smith");
         public static Menu Menu = new MainMenu();
         //Save so that we can switch back to this easily
         public static Menu MainMenu;
-        public static Player Player = new Player("John Smith");
+        
         
         static void Main(string[] args)
         {
@@ -50,6 +51,7 @@ namespace OOPAssignment011
                 //Do stuff here
                 Menu.ActivePet.Update();
                 Menu.ActivePet.Room.Update();
+                Player.PlayerInventory.Coins++;
                 
                 Thread.Sleep(1000 / TickRate);
             }

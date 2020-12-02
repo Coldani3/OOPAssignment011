@@ -4,7 +4,7 @@ namespace OOPAssignment011
 {
     public class ShopMenu : ArrowNavigableMenu
     {
-        public ShopMenu(Player player)
+        public ShopMenu()
         {
             this.AvailableActions.Add(new ActionShopItem(new ToyBall()));
             this.AvailableActions.Add(new ActionGoToMainMenu());
@@ -25,6 +25,9 @@ namespace OOPAssignment011
 
                 Program.ResetConsoleColours();
             }
+
+            Console.SetCursorPosition(Console.WindowWidth - 14, 2);
+            Console.Write($"Coins: {Program.Player.PlayerInventory.Coins}");
         }
 
         public override void Select(int selectedIndex)

@@ -13,10 +13,12 @@ namespace OOPAssignment011
                 if ((key.Modifiers & ConsoleModifiers.Control) != 0)
                 {
                     this.SelectedIndex = this.AvailableActions.Count - 1;
+                    this.OnArrowNavigate(key);
                 }
                 else if (this.SelectedIndex < this.AvailableActions.Count - 1)
                 {
                     this.SelectedIndex++;
+                    this.OnArrowNavigate(key);
                 }
             }
             else if (key.Key == ConsoleKey.UpArrow)
@@ -24,10 +26,12 @@ namespace OOPAssignment011
                 if ((key.Modifiers & ConsoleModifiers.Control) != 0)
                 {
                     this.SelectedIndex = 0;
+                    this.OnArrowNavigate(key);
                 }
                 else if (this.SelectedIndex > 0)
                 {
                     this.SelectedIndex--;
+                    this.OnArrowNavigate(key);
                 }
             }
 
@@ -38,5 +42,10 @@ namespace OOPAssignment011
         }
 
         public abstract void Select(int selectedIndex);
+
+        public virtual void OnArrowNavigate(ConsoleKeyInfo key)
+        {
+
+        }
     }
 }
