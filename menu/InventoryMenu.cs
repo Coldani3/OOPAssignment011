@@ -4,7 +4,7 @@ namespace OOPAssignment011
 {
     public class InventoryMenu : ArrowNavigableMenu
     {
-        private int VerticalOffset = 0;
+        private int Scroll = 0;
         private Action mainMenuAction = new ActionGoToMainMenu();
 
         private int itemsCanBeDisplayed;
@@ -20,19 +20,22 @@ namespace OOPAssignment011
 
             if (this.AvailableActions.Count > 0)
             {
+                itemsCanBeDisplayed = (Console.WindowHeight - 4) < this.AvailableActions.Count ? Console.WindowHeight - 4 : this.AvailableActions.Count;
+
                 Program.DisplayActionDescription(this.AvailableActions[this.SelectedIndex].Description);
                 Console.SetCursorPosition(0, 3);
 
-                itemsCanBeDisplayed = (Console.WindowHeight - 4) < this.AvailableActions.Count ? Console.WindowHeight - 4 : this.AvailableActions.Count;
-
-                for (int i = this.VerticalOffset; i < this.itemsCanBeDisplayed; i++)
+                for (int i = this.Scroll; i < this.itemsCanBeDisplayed + this.Scroll; i++)
                 {
                     if (i == this.SelectedIndex)
                     {
                         Program.StartSelectWrite();
                     }
 
-                    Console.WriteLine($"{this.AvailableActions[i]}");
+                    if (i < this.AvailableActions.Count)
+                    {
+                        Console.WriteLine($"{this.AvailableActions[i]}");// - {i}");
+                    }
 
                     Program.ResetConsoleColours();
                 }
@@ -47,7 +50,14 @@ namespace OOPAssignment011
         {
             if (this.AvailableActions[selectedIndex].CanPerformAction(this.ActivePet))
             {
+                //Action prevAction = this.AvailableActions[selectedIndex];
                 this.AvailableActions[selectedIndex].Execute(this.ActivePet);
+
+                // if (!Object.ReferenceEquals(prevAction, this.AvailableActions[selectedIndex]))//prevAction != this.AvailableActions[selectedIndex])
+                // {
+                //     this.Scroll--;
+                // }
+
                 this.UpdateInventory();
             }
         }
@@ -71,16 +81,16 @@ namespace OOPAssignment011
         {
             if (key.Key == ConsoleKey.UpArrow)
             {
-                if (this.VerticalOffset > 0 && this.SelectedIndex == this.VerticalOffset)
+                if (this.Scroll > 0 && this.SelectedIndex == this.Scroll)
                 {
-                    this.VerticalOffset--;
+                    this.Scroll--;
                 }
             }
             else
             {
-                if (this.SelectedIndex - this.VerticalOffset == this.itemsCanBeDisplayed)
+                if (this.SelectedIndex - this.Scroll == this.itemsCanBeDisplayed)
                 {
-                    this.VerticalOffset++;
+                    this.Scroll++;
                 }
             }
         }

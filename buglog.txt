@@ -1,0 +1,15 @@
+---inventory sometimes crashes with index out of range error--- - FIXED
+reproducible with:
+scroll to bottom of inventory so that Go to Main Menu is visible
+scroll up to the Steak 5 above it 
+
+
+steak is index 5 (6th item in inventory)
+only seems to crash when the final option is visible
+
+does not happen with the ball which is right above to main menu, does happen with the steak above
+- related to the removal of the item?
+- it seems to remove the right item
+- possibly to do with the menu rejigging itself after the removal of the item and vertical offset not adjusting appropriately?
+
+---control arrow on screens with a scroll will scroll to the top one on the page---

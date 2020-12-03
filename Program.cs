@@ -22,6 +22,7 @@ namespace OOPAssignment011
         public static char TopLeftCorner = '┌';
         public static char TopRightCorner = '┘';
         public static char HorizontalVertJoiner = '┬';
+        private static string finalMessage = "Bye!";
 
         static void Main(string[] args)
         {
@@ -39,37 +40,59 @@ namespace OOPAssignment011
             Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new ToyBall());
+            Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new FoodSteak());
+            Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new ToyBall());
             Player.PlayerInventory.Coins = 1000;
             MainMenu = Menu;
 
             //Input loop here
-
-            while (Running)
+            try
             {
-                Menu.HandleInput(Console.ReadKey(true));
+                while (Running)
+                {
+                    Menu.HandleInput(Console.ReadKey(true));
+                }
+            }
+            catch (Exception e)
+            {
+                finalMessage = e.Message + e.StackTrace;
+                Running = false;
             }
 
             Console.Clear();
-            Console.WriteLine("Bye!");
+            Console.WriteLine(finalMessage);
 
             Console.ReadKey();
         }
 
         public static void Tick()
         {
-            while (Running)
+            try
             {
-                Console.Clear();
-                Menu.Display();
-                
-                //Do stuff here
-                Menu.ActivePet.Update();
-                Menu.ActivePet.Room.Update();
-                Player.PlayerInventory.Coins++;
-                
-                Thread.Sleep(1000 / TickRate);
+                while (Running)
+                {
+                    Console.Clear();
+                    Menu.Display();
+                    
+                    //Do stuff here
+                    Menu.ActivePet.Update();
+                    Menu.ActivePet.Room.Update();
+                    Player.PlayerInventory.Coins++;
+                    
+                    Thread.Sleep(1000 / TickRate);
+                }
             }
+            catch (Exception e)
+            {
+                Running = false;
+                finalMessage = e.Message + e.StackTrace;
+            }
+            
         }
 
         public static void HandleInput(ConsoleKeyInfo key)

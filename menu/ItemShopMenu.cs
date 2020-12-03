@@ -2,9 +2,9 @@ using System;
 
 namespace OOPAssignment011
 {
-    public class ShopMenu : ArrowNavigableMenu
+    public class ItemShopMenu : ArrowNavigableMenu
     {
-        public ShopMenu()
+        public ItemShopMenu()
         {
             this.AvailableActions.Add(new ActionShopItem(new ToyBall()));
             this.AvailableActions.Add(new ActionShopItem(new FoodSteak()));

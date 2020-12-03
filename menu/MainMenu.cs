@@ -9,7 +9,7 @@ namespace OOPAssignment011
         public MainMenu()
         {
             this.AvailableActions.Add(new ActionPlay());
-            ShopMenu shopMenu = new ShopMenu();
+            ItemShopMenu shopMenu = new ItemShopMenu();
             InventoryMenu inventoryMenu = new InventoryMenu();
             this.AvailableActions.Add(new ActionGoToMenu("Shop", "Purchase things in ye olde shoppe.", shopMenu));
             this.AvailableActions.Add(new ActionGoToMenu("Inventory", "View your inventory.", inventoryMenu));

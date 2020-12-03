@@ -7,6 +7,7 @@ namespace OOPAssignment011
         public static readonly string FoodType = "FOOD";
         public static readonly string ToyType = "TOY";
         public static readonly string MedicineType = "MEDICINE";
+        public static readonly string OtherType = "OTHER";
         public int Cost { get; protected set; }
         public string Name { get; protected set; }
         public string Description { get; protected set; }
