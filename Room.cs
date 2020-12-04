@@ -7,7 +7,7 @@ namespace OOPAssignment011
         public float CurrentTemperature; //degrees Celsius
         //Items that alter the room over multiple turns should probably alter this
         public float AmbientTemperature { get; private set; }
-        private static readonly float MinRatePerSecond = 0.005f;
+        private static readonly float MinRatePerSecond = 0.02f;
 
         public Room(float ambientTemperature, float startingTemperature)
         {

@@ -13,19 +13,22 @@ namespace OOPAssignment011
             ShopItems.Add(item);
         }
 
-        public static List<InventoryItem> GetShopItemsByType(string type)
+        public static List<InventoryItem> GetShopItemsByType(ItemType type)
         {
-            // List<InventoryItem> result = new List<InventoryItem>();
+            List<InventoryItem> result = new List<InventoryItem>();
 
-            // foreach (InventoryItem item in ShopItems)
-            // {
-            //     if (item.GetItemType() == type)
-            //     {
-            //         result.Add(item);
-            //     }
-            // }
+            foreach (InventoryItem item in ShopItems)
+            {
+                if (item.GetItemType() == type)
+                {
+                    result.Add(item);
+                }
+            }
 
-            return /*result;*/(List<InventoryItem>) ShopItems.Where(x => type == x.GetItemType()).ToList();
+            Console.WriteLine(result.Count);
+            System.Threading.Thread.Sleep(1500);
+
+            return result; //(List<InventoryItem>) ShopItems.Where((x) => (type == x.GetItemType())).ToList();
         }
 
         public static void RegisterAll()

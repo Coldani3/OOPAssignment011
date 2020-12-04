@@ -28,7 +28,7 @@ namespace OOPAssignment011
         }
 
         //ID that defines if it is a Toy, Food or Medicine object.
-        public abstract string GetItemType();
+        public abstract ItemType GetItemType();
 
         public virtual bool IsCompatibleWith(Pet pet)
         {
@@ -46,5 +46,13 @@ namespace OOPAssignment011
 
             return result;
         }
+    }
+
+    public enum ItemType
+    {
+        Food,
+        Toy,
+        Medicine,
+        Other
     }
 }

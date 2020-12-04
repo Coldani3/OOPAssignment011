@@ -22,9 +22,9 @@ namespace OOPAssignment011
             return true;
         }
 
-        public override string GetItemType()
+        public override ItemType GetItemType()
         {
-            return InventoryItem.MedicineType;
+            return ItemType.Medicine;
         }
     }
 }

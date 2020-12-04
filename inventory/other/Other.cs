@@ -7,9 +7,9 @@ namespace OOPAssignment011
             this.MaxUses = maxUses;
         }
 
-        public override string GetItemType()
+        public override ItemType GetItemType()
         {
-            return InventoryItem.OtherType;
+            return ItemType.Other;
         }
     }
 }

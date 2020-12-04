@@ -12,9 +12,9 @@ namespace OOPAssignment011
             this.MaxUses = 1;
         }
 
-        public override string GetItemType()
+        public override ItemType GetItemType()
         {
-            return InventoryItem.FoodType;
+            return ItemType.Food;
         }
 
         public override bool Use(Pet pet)

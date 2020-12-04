@@ -9,14 +9,9 @@ namespace OOPAssignment011
             this.MaxUses = maxUses;
         }
 
-        public override string GetItemType()
+        public override ItemType GetItemType()
         {
-            return InventoryItem.ToyType;
-        }
-
-        public virtual bool IsCompatibleWith(Pet pet)
-        {
-            return true;
+            return ItemType.Toy;
         }
     }
 }

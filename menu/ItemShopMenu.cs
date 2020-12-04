@@ -6,7 +6,7 @@ namespace OOPAssignment011
     public class ItemShopMenu : ArrowNavigableMenu
     {
         private List<InventoryItem> items;
-        public ItemShopMenu(string shopItemsType)
+        public ItemShopMenu(ItemType shopItemsType)
         {
             items = ShopItemRegistry.GetShopItemsByType(shopItemsType);
 

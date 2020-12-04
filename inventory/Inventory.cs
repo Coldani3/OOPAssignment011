@@ -36,17 +36,17 @@ namespace OOPAssignment011
 
         public List<Toy> GetToys()
         {
-            return (List<Toy>) this.InventoryItems.Where((x) => x.GetItemType() == InventoryItem.ToyType);
+            return (List<Toy>) this.InventoryItems.Where((x) => x.GetItemType() == ItemType.Toy);
         }
 
         public List<Medicine> GetMedicine()
         {
-            return (List<Medicine>) this.InventoryItems.Where((x) => x.GetItemType() == InventoryItem.MedicineType);
+            return (List<Medicine>) this.InventoryItems.Where((x) => x.GetItemType() == ItemType.Medicine);
         }
 
         public List<Food> GetFood()
         {
-            return (List<Food>) this.InventoryItems.Where((x) => x.GetItemType() == InventoryItem.FoodType);   
+            return (List<Food>) this.InventoryItems.Where((x) => x.GetItemType() == ItemType.Food);   
         }
         
     }
