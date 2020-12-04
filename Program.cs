@@ -26,6 +26,7 @@ namespace OOPAssignment011
 
         static void Main(string[] args)
         {
+            ShopItemRegistry.RegisterAll();
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.White;
             Console.Clear();

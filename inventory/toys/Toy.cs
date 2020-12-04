@@ -13,5 +13,10 @@ namespace OOPAssignment011
         {
             return InventoryItem.ToyType;
         }
+
+        public virtual bool IsCompatibleWith(Pet pet)
+        {
+            return true;
+        }
     }
 }

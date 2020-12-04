@@ -41,7 +41,33 @@ namespace OOPAssignment011
             }
         }
 
-        public abstract void Select(int selectedIndex);
+        public override void Display()
+        {
+            Program.DisplayActionDescription(this.AvailableActions[this.SelectedIndex].Description);
+            Console.SetCursorPosition(0, 2);
+            for (int i = 0; i < this.AvailableActions.Count; i++)
+            {
+                if (i == this.SelectedIndex)
+                {
+                    Program.StartSelectWrite();
+                }
+
+                Console.WriteLine($"{this.AvailableActions[i].ToString()}");
+
+                Program.ResetConsoleColours();
+            }
+        }
+
+        public virtual void Select(int selectedIndex)
+        {
+            if (selectedIndex < this.AvailableActions.Count)
+            {
+                if (this.AvailableActions[selectedIndex].CanPerformAction(this.ActivePet))
+                {
+                    this.AvailableActions[selectedIndex].Execute(this.ActivePet);
+                }
+            }
+        }
 
         public virtual void OnArrowNavigate(ConsoleKeyInfo key)
         {

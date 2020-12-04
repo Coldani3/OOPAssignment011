@@ -10,10 +10,13 @@ namespace OOPAssignment011
 
         public override bool Execute(Pet pet)
         {
-            this.item.Use(pet);
-            if (this.item.Uses >= this.item.MaxUses)
+            if (this.item.IsCompatibleWith(pet))
             {
-                Program.Player.PlayerInventory.RemoveItem(this.item);
+                this.item.Use(pet);
+                if (this.item.Uses >= this.item.MaxUses)
+                {
+                    Program.Player.PlayerInventory.RemoveItem(this.item);
+                }
             }
             return true;
         }

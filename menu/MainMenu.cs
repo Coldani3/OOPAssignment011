@@ -9,7 +9,7 @@ namespace OOPAssignment011
         public MainMenu()
         {
             this.AvailableActions.Add(new ActionPlay());
-            ItemShopMenu shopMenu = new ItemShopMenu();
+            ShopMenuSelect shopMenu = new ShopMenuSelect();
             InventoryMenu inventoryMenu = new InventoryMenu();
             this.AvailableActions.Add(new ActionGoToMenu("Shop", "Purchase things in ye olde shoppe.", shopMenu));
             this.AvailableActions.Add(new ActionGoToMenu("Inventory", "View your inventory.", inventoryMenu));
@@ -24,17 +24,6 @@ namespace OOPAssignment011
             this.DisplayPetStats();
             this.DisplaySelectMenu();
             this.DisplayRoomStatus();
-        }
-
-        public override void Select(int selectedIndex)
-        {
-            if (selectedIndex < this.AvailableActions.Count)
-            {
-                if (this.AvailableActions[this.SelectedIndex].CanPerformAction(this.ActivePet))
-                {
-                    this.AvailableActions[this.SelectedIndex].Execute(this.ActivePet);
-                }
-            }
         }
 
         private void DisplaySelectMenu()

@@ -13,3 +13,5 @@ does not happen with the ball which is right above to main menu, does happen wit
 - possibly to do with the menu rejigging itself after the removal of the item and vertical offset not adjusting appropriately?
 
 ---control arrow on screens with a scroll will scroll to the top one on the page---
+
+---inventoryitem.getitembytype doesn't seem to work---

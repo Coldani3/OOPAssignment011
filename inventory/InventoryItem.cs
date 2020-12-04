@@ -30,6 +30,11 @@ namespace OOPAssignment011
         //ID that defines if it is a Toy, Food or Medicine object.
         public abstract string GetItemType();
 
+        public virtual bool IsCompatibleWith(Pet pet)
+        {
+            return true;
+        }
+
         public override string ToString()
         {
             string result = $"{this.Name}";
