@@ -1,12 +1,15 @@
 namespace OOPAssignment011
 {
-    public class SelectPetMenu : ArrowNavigableMenu
+    public class SelectPetMenu : ScrollingArrowNavigableMenu
     {
         public SelectPetMenu(Player player)
         {
-            foreach (Pet pet in player.Pets.Pets)
+            if (player.Pets.Pets.Count > 0)
             {
-                this.AvailableActions.Add(new ActionSelectPet(pet));
+                foreach (Pet pet in player.Pets.Pets)
+                {
+                    this.AvailableActions.Add(new ActionSelectPet(pet, this));
+                }
             }
 
             this.AvailableActions.Add(new ActionGoToMainMenu());

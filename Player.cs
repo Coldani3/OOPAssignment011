@@ -2,12 +2,14 @@ namespace OOPAssignment011
 {
     public class Player
     {
-        public PetCollection Pets = new PetCollection();
-        public Inventory PlayerInventory = new Inventory();
+        public PetCollection Pets;
+        public Inventory PlayerInventory;
         public string Name = "";
 
         public Player(string name)
         {
+            this.Pets = new PetCollection();
+            this.PlayerInventory = new Inventory();
             this.Name = name;
         }
 

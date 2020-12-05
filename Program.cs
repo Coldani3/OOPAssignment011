@@ -9,7 +9,7 @@ namespace OOPAssignment011
         public static readonly short TickRate = 10;
         public static bool Running = true;
         public static Player Player = new Player("John Smith");
-        public static Menu Menu = new MainMenu();
+        public static Menu Menu;
         //Save so that we can switch back to this easily
         public static Menu MainMenu;
 
@@ -34,9 +34,13 @@ namespace OOPAssignment011
             Task mainLoopTask = new Task(Tick);
             mainLoopTask.Start();
             Room startRoom = new Room(25, 18);
-            Player.Pets.SelectedPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true));
+            Pet testPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true));
+            Player.Pets.AddPet(testPet);
+            Player.Pets.SelectedPet = testPet;
             Player.Pets.SelectedPet.Room = startRoom;
+            Menu = new MainMenu();
             Menu.ActivePet = Player.Pets.SelectedPet;
+            Menu.CurrentPlayer = Player;
             // Player.PlayerInventory.AddItem(new ToyBall());
             Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new FoodSteak());
@@ -78,7 +82,17 @@ namespace OOPAssignment011
                 while (Running)
                 {
                     Console.Clear();
-                    Menu.Display();
+
+                    if (Menu != null)
+                    {
+                        Menu.Display();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Null Menu! Falling back to Main Menu instead!");
+                        Thread.Sleep(1000);
+                        GotoMainMenu();
+                    }
                     
                     //Do stuff here
                     Menu.ActivePet.Update();
@@ -163,6 +177,14 @@ namespace OOPAssignment011
             Console.SetCursorPosition(0, 1);
             Console.WriteLine(new String(Program.HorizontalLine, Console.WindowWidth));
             Console.ResetColor();
+        }
+
+        public static void ChangePlayer(Player newPlayer)
+        {
+            Player.SaveData("players.txt");
+            Player = newPlayer;
+            Menu.CurrentPlayer = Player;
+            MainMenu.CurrentPlayer = Player;
         }
     }
 }

@@ -2,12 +2,9 @@ using System;
 
 namespace OOPAssignment011
 {
-    public class InventoryMenu : ArrowNavigableMenu
+    public class InventoryMenu : ScrollingArrowNavigableMenu
     {
-        private int Scroll = 0;
         private Action mainMenuAction = new ActionGoToMainMenu();
-
-        private int itemsCanBeDisplayed;
 
         public InventoryMenu()
         {
@@ -18,32 +15,7 @@ namespace OOPAssignment011
         {
             this.UpdateInventory();
 
-            if (this.AvailableActions.Count > 0)
-            {
-                itemsCanBeDisplayed = (Console.WindowHeight - 4) < this.AvailableActions.Count ? Console.WindowHeight - 4 : this.AvailableActions.Count;
-
-                Program.DisplayActionDescription(this.AvailableActions[this.SelectedIndex].Description);
-                Console.SetCursorPosition(0, 3);
-
-                for (int i = this.Scroll; i < this.itemsCanBeDisplayed + this.Scroll; i++)
-                {
-                    if (i == this.SelectedIndex)
-                    {
-                        Program.StartSelectWrite();
-                    }
-
-                    if (i < this.AvailableActions.Count)
-                    {
-                        Console.WriteLine($"{this.AvailableActions[i]}");// - {i}");
-                    }
-
-                    Program.ResetConsoleColours();
-                }
-            }
-            else
-            {
-                Console.WriteLine("Your inventory is empty!");
-            }
+            base.Display();
         }
 
         public override void Select(int selectedIndex)
@@ -75,24 +47,6 @@ namespace OOPAssignment011
             }
 
             this.AvailableActions.Add(mainMenuAction);
-        }
-
-        public override void OnArrowNavigate(ConsoleKeyInfo key)
-        {
-            if (key.Key == ConsoleKey.UpArrow)
-            {
-                if (this.Scroll > 0 && this.SelectedIndex == this.Scroll)
-                {
-                    this.Scroll--;
-                }
-            }
-            else
-            {
-                if (this.SelectedIndex - this.Scroll == this.itemsCanBeDisplayed)
-                {
-                    this.Scroll++;
-                }
-            }
         }
     }
 }

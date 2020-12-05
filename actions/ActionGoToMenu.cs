@@ -11,6 +11,7 @@ namespace OOPAssignment011
         public override bool Execute(Pet pet)
         {
             this.menu.ActivePet = pet;
+            this.menu.CurrentPlayer = Program.Player;
             Program.Menu = this.menu;
             return true;
         }

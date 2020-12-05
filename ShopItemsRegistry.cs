@@ -25,8 +25,8 @@ namespace OOPAssignment011
                 }
             }
 
-            Console.WriteLine(result.Count);
-            System.Threading.Thread.Sleep(1500);
+            // Console.WriteLine(result.Count);
+            // System.Threading.Thread.Sleep(1500);
 
             return result; //(List<InventoryItem>) ShopItems.Where((x) => (type == x.GetItemType())).ToList();
         }

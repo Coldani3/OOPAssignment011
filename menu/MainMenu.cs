@@ -13,7 +13,7 @@ namespace OOPAssignment011
             InventoryMenu inventoryMenu = new InventoryMenu();
             this.AvailableActions.Add(new ActionGoToMenu("Shop", "Purchase things in ye olde shoppe.", shopMenu));
             this.AvailableActions.Add(new ActionGoToMenu("Inventory", "View your inventory.", inventoryMenu));
-            //Change pet
+            this.AvailableActions.Add(new ActionGoToMenu("Change Pet", "Change the current pet to another in your collection.", new SelectPetMenu(Program.Player)));
             //Change room
             this.AvailableActions.Add(new ActionQuit());
         }
