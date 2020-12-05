@@ -32,10 +32,12 @@ namespace OOPAssignment011
             Console.Clear();
             Console.CursorVisible = false;
             Task mainLoopTask = new Task(Tick);
-            mainLoopTask.Start();
             Room startRoom = new Room(25, 18);
             Pet testPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true));
+            Pet testPet2 = new Pet("Bob, Destroyer of Worlds", 100000, 0, 2.0f, 100, new PetCapabilities(false, false, false));
+            testPet.Room = startRoom;
             Player.Pets.AddPet(testPet);
+            Player.Pets.AddPet(testPet2);
             Player.Pets.SelectedPet = testPet;
             Player.Pets.SelectedPet.Room = startRoom;
             Menu = new MainMenu();
@@ -54,6 +56,8 @@ namespace OOPAssignment011
             Player.PlayerInventory.AddItem(new ToyBall());
             Player.PlayerInventory.Coins = 1000;
             MainMenu = Menu;
+
+            mainLoopTask.Start();
 
             //Input loop here
             try
@@ -185,6 +189,27 @@ namespace OOPAssignment011
             Player = newPlayer;
             Menu.CurrentPlayer = Player;
             MainMenu.CurrentPlayer = Player;
+        }
+
+        public static void ChangePet(Pet newPet)
+        {
+            if (Menu != null)
+            {
+                Player.Pets.SelectedPet = newPet;
+                Menu.ActivePet = newPet;
+            }
+            else
+            {
+                DebugMessage("Menu is null on ChangePet!", 1500);
+            }
+            Program.MainMenu.ActivePet = newPet;
+            //pet.Owner.Pets.SelectedPet = newPet;
+        }
+
+        public static void DebugMessage(string message, int delay)
+        {
+            Console.WriteLine(message);
+            Thread.Sleep(delay);
         }
     }
 }

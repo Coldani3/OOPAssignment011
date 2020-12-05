@@ -12,9 +12,13 @@ namespace OOPAssignment011
 
         public override bool Execute(Pet pet)
         {
-            menu.ActivePet = newPet;
-            pet.Owner.Pets.SelectedPet = newPet;
+            Program.ChangePet(this.newPet);
             return true;
+        }
+
+        public override bool CanPerformAction(Pet pet)
+        {
+            return pet != newPet;
         }
     }
 }
