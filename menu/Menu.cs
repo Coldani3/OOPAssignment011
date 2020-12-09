@@ -8,6 +8,7 @@ namespace OOPAssignment011
         public List<Action> AvailableActions = new List<Action>();
         public Pet ActivePet;
         public Player CurrentPlayer;
+        public int SelectedIndex = 0;
 
         public abstract void HandleInput(ConsoleKeyInfo key);
         public abstract void Display();

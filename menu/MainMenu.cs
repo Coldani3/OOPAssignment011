@@ -25,10 +25,8 @@ namespace OOPAssignment011
         }
 
         public override void Display()
-        {
-            Program.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
-            
-            this.DisplayPetStats();
+        {   
+            //this.DisplayPetStats();
             this.DisplaySelectMenu();
             this.DisplayRoomStatus();
         }
@@ -36,17 +34,17 @@ namespace OOPAssignment011
         private void DisplaySelectMenu()
         {
             Console.SetCursorPosition(0, 3);
-            foreach (Action action in this.AvailableActions)
+            for (int i = 0; i < this.AvailableActions.Count; i++)
             {
-                int actionNum = this.AvailableActions.IndexOf(action) + 1;
-                bool selected = this.SelectedIndex + 1 == actionNum;
+                Action action = this.AvailableActions[i];
+                bool selected = this.SelectedIndex == i;
 
                 if (selected)
                 {
                     Program.StartSelectWrite();
                 }
 
-                Console.WriteLine($"{actionNum}. {action.ToString()}");
+                Console.WriteLine($"{i + 1}. {action.ToString()}");
 
                 if (selected)
                 {
@@ -67,11 +65,8 @@ namespace OOPAssignment011
             Console.Write(Program.BottomRightCorner);
 
             Console.SetCursorPosition(0, this.AvailableActions.Count + 5);
-
             Console.WriteLine(this.MenuBottomLine);
         }
-        
-        
 
         private void DisplayPetStats()
         {

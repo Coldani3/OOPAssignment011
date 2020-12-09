@@ -4,8 +4,6 @@ namespace OOPAssignment011
 {
     public abstract class ArrowNavigableMenu : Menu
     {
-        protected int SelectedIndex = 0;
-
         public override void HandleInput(ConsoleKeyInfo key)
         {
             if (key.Key == ConsoleKey.DownArrow)

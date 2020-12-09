@@ -9,6 +9,7 @@ namespace OOPAssignment011
 
         public string Name;
         public bool IsSick = false;
+        public int PreferredTemperature = 25;
         //Maxes out at 100, or peak happiness
         private float mood;
         public float Mood { 
@@ -77,7 +78,7 @@ namespace OOPAssignment011
         public Room Room;
         public Player Owner;
 
-        public Pet(string name, int maxHealth, float hunger, float hungerRate, float mood, PetCapabilities petCapabilities)
+        public Pet(string name, int maxHealth, float hunger, float hungerRate, float mood, PetCapabilities petCapabilities, int preferredTemperature)
         {
             this.MaxHealth = maxHealth;
             this.health = maxHealth;
@@ -86,21 +87,37 @@ namespace OOPAssignment011
             this.HungerRate = hungerRate;
             this.Mood = mood;
             this.Capabilities = petCapabilities;
+            this.PreferredTemperature = preferredTemperature;
         }
 
         public void Update()
         {
+            float temperatureDifference = (float) Math.Abs(this.PreferredTemperature - this.Room.CurrentTemperature);
             this.Hunger += (HungerRate / Program.TickRate);
-            this.Mood -= (float) ((this.Hunger >= 50 ? 2.0f : 1.5f) / Program.TickRate);
+            float MoodDecayRate = (this.Hunger >= 50 ? 2.0f : 1.5f) + (0.25f * (((temperatureDifference - 10) >= 0 ? (temperatureDifference - 10) : 0) / 8.0f));
+            this.Mood -= (float) (MoodDecayRate / Program.TickRate);
 
             if (this.Room.WaterEnvironment && !this.Capabilities.CanGoUnderwater)
             {
                 this.Health -= (float) (1.0f / Program.TickRate);
             }
 
+            if (temperatureDifference > 30)
+            {
+                this.Health -= (temperatureDifference - 30) / 10;
+            }
+
             if (this.Hunger >= 80)
             {
                 this.Health -= (5.0f / Program.TickRate) * (1.0f / (61.0f - (this.Hunger - 40.0f)));
+            }
+
+            if (Math.Floor(this.Health) <= 0)
+            {
+                this.Owner.Pets.RemovePet(this);
+                Console.Clear();
+                Program.MessageUser($"Your pet {this.Name} died :[", 2000);
+                Program.Menu = new SelectPetMenu(this.Owner);
             }
         }
     }

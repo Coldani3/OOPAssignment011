@@ -6,5 +6,10 @@ namespace OOPAssignment011
         {
 
         }
+
+        public override bool IsCompatibleWith(Pet pet)
+        {
+            return pet.Capabilities.CanEatMeat;
+        }
     }
 }
