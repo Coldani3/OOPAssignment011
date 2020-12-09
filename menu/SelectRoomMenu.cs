@@ -4,7 +4,12 @@ namespace OOPAssignment011
     {
         public SelectRoomMenu()
         {
-            
+            foreach (Room room in Program.Rooms)
+            {
+                this.AvailableActions.Add(new ActionSelectRoom(room));
+            }
+
+            this.AvailableActions.Add(new ActionGoToMainMenu());
         }
     }
 }

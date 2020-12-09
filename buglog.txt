@@ -4,6 +4,7 @@ scroll to bottom of inventory so that Go to Main Menu is visible
 scroll up to the Steak 5 above it 
 
 
+
 steak is index 5 (6th item in inventory)
 only seems to crash when the final option is visible
 
@@ -12,6 +13,10 @@ does not happen with the ball which is right above to main menu, does happen wit
 - it seems to remove the right item
 - possibly to do with the menu rejigging itself after the removal of the item and vertical offset not adjusting appropriately?
 
----control arrow on screens with a scroll will scroll to the top one on the page---
+---control arrow on screens with a scroll will scroll to the top one on the page without updating the view---
 
----inventoryitem.getitembytype doesn't seem to work---
+---inventoryitem.getitembytype doesn't seem to work--- - FIXED... somehow?
+
+---Main menu really laggy in VSCode console for some reason?---
+Only happened after change room was added
+Not anything to do with the change room menu specifically, a duplicate of an existing menu causes the same thing

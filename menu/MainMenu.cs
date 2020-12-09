@@ -6,6 +6,9 @@ namespace OOPAssignment011
 {
     public class MainMenu : ArrowNavigableMenu
     {
+
+        private int menuSelectWidth;
+        private string MenuBottomLine;
         public MainMenu()
         {
             this.AvailableActions.Add(new ActionPlay());
@@ -14,13 +17,17 @@ namespace OOPAssignment011
             this.AvailableActions.Add(new ActionGoToMenu("Shop", "Purchase things in ye olde shoppe.", shopMenu));
             this.AvailableActions.Add(new ActionGoToMenu("Inventory", "View your inventory.", inventoryMenu));
             this.AvailableActions.Add(new ActionGoToMenu("Change Pet", "Change the current pet to another in your collection.", new SelectPetMenu(Program.Player)));
+            this.AvailableActions.Add(new ActionGoToMenu("Change Room", "Change the room your pet is in to something else", new SelectRoomMenu()));
             //Change room
             this.AvailableActions.Add(new ActionQuit());
+            this.menuSelectWidth = this.AvailableActions.Max((x) => x.Name.Length) + 5;
+            this.MenuBottomLine = new String(Program.HorizontalLine, this.menuSelectWidth);
         }
 
         public override void Display()
         {
             Program.DisplayActionDescription(AvailableActions[this.SelectedIndex].Description);
+            
             this.DisplayPetStats();
             this.DisplaySelectMenu();
             this.DisplayRoomStatus();
@@ -28,7 +35,6 @@ namespace OOPAssignment011
 
         private void DisplaySelectMenu()
         {
-            int width = this.AvailableActions.Max((x) => x.Name.Length) + 5;
             Console.SetCursorPosition(0, 3);
             foreach (Action action in this.AvailableActions)
             {
@@ -50,19 +56,19 @@ namespace OOPAssignment011
 
             for (int i = 2; i < this.AvailableActions.Count + 5; i++)
             {
-                Console.SetCursorPosition(width, i);
+                Console.SetCursorPosition(this.menuSelectWidth, i);
                 Console.Write(Program.VerticalLine);
             }
 
-            Console.SetCursorPosition(width, 1);
+            Console.SetCursorPosition(this.menuSelectWidth, 1);
             Console.Write(Program.HorizontalVertJoiner);
 
-            Console.SetCursorPosition(width, this.AvailableActions.Count + 5);
+            Console.SetCursorPosition(this.menuSelectWidth, this.AvailableActions.Count + 5);
             Console.Write(Program.BottomRightCorner);
 
             Console.SetCursorPosition(0, this.AvailableActions.Count + 5);
 
-            Console.WriteLine(new String(Program.HorizontalLine, width));
+            Console.WriteLine(this.MenuBottomLine);
         }
         
         

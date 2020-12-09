@@ -10,11 +10,17 @@ namespace OOPAssignment011
         private static readonly float MinRatePerSecond = 0.02f;
         public bool WaterEnvironment { get; protected set; } = false;
         public bool SkyEnvironment { get; protected set; } = false;
+        public string Name { get; protected set; } = "Room";
+        public string Description { get; protected set; }
 
-        public Room(float ambientTemperature, float startingTemperature)
+        public Room(string name, string description, float ambientTemperature, float startingTemperature, bool waterEnvironment = false, bool skyEnvironment = false)
         {
             this.AmbientTemperature = ambientTemperature;
             this.CurrentTemperature = startingTemperature;
+            this.Name = name;
+            this.Description = description;
+            this.WaterEnvironment = waterEnvironment;
+            this.SkyEnvironment = skyEnvironment;
         }
 
         public void Update()

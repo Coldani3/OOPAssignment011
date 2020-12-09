@@ -24,8 +24,17 @@ namespace OOPAssignment011
         public static char TopRightCorner = '┘';
         public static char HorizontalVertJoiner = '┬';
         private static string finalMessage = "Bye!";
+        private static readonly string TopHorizontalLine = new string(Program.HorizontalLine, Console.WindowWidth);
 
         public static Random random = new Random();
+        public static long TicksPassed = 0;
+
+        public static Room[] Rooms = new Room[] {
+            new Room("Normal Room", "A room of average temperature.", 25, 18),
+            new Room("Volcano Room", "A really hot room.", 78, 68),
+            new Room("Freezer Room", "A very cold room.", -4, 2),
+            new Room("Sky Room", "A room on a floating island.", 11, 14, false, true)
+        };
 
         static void Main(string[] args)
         {
@@ -35,15 +44,15 @@ namespace OOPAssignment011
             Console.Clear();
             Console.CursorVisible = false;
             Task mainLoopTask = new Task(Tick);
-            Room startRoom = new Room(25, 18);
+            
             Pet testPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true, false, true));
             Pet testPet2 = new Pet("Bob, Destroyer of Worlds", 100000, 0, 2.0f, 100, new PetCapabilities(false, false, false, true, true));
-            testPet.Room = startRoom;
-            testPet2.Room = startRoom;
+            testPet.Room = Rooms[0];
+            testPet2.Room = Rooms[0];
             Player.Pets.AddPet(testPet);
             Player.Pets.AddPet(testPet2);
             Player.Pets.SelectedPet = testPet;
-            Player.Pets.SelectedPet.Room = startRoom;
+            Player.Pets.SelectedPet.Room = Rooms[0];
             Menu = new MainMenu();
             Menu.ActivePet = Player.Pets.SelectedPet;
             Menu.CurrentPlayer = Player;
@@ -106,6 +115,7 @@ namespace OOPAssignment011
                     Menu.ActivePet.Update();
                     Menu.ActivePet.Room.Update();
                     Player.PlayerInventory.Coins++;
+                    TicksPassed++;
                     
                     Thread.Sleep(1000 / TickRate);
                 }
@@ -187,7 +197,7 @@ namespace OOPAssignment011
             Console.Write(description);
             Program.ResetConsoleColours();
             Console.SetCursorPosition(0, 1);
-            Console.WriteLine(new String(Program.HorizontalLine, Console.WindowWidth));
+            Console.WriteLine(TopHorizontalLine);
             Console.ResetColor();
         }
 
