@@ -74,7 +74,8 @@ namespace OOPAssignment011
             Console.Write(this.ActivePet.Name);
             Console.SetCursorPosition(Console.WindowWidth - 16, 3);
             Program.ChangeColorOnPositiveStat((this.ActivePet.Health / this.ActivePet.MaxHealth) * 100);
-            Console.Write($"Health: {this.ActivePet.Health}/{this.ActivePet.MaxHealth}");
+            int hpRounded = (int) Math.Floor(this.ActivePet.Health);
+            Console.Write($"Health: {hpRounded}/{this.ActivePet.MaxHealth}");
             Console.SetCursorPosition(Console.WindowWidth - 16, 4);
 
             int hungerRounded = (int) Math.Floor(this.ActivePet.Hunger);

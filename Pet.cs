@@ -91,11 +91,16 @@ namespace OOPAssignment011
         public void Update()
         {
             this.Hunger += (HungerRate / Program.TickRate);
-            this.Mood -= (float) (1.0f / Program.TickRate);
+            this.Mood -= (float) ((this.Hunger >= 50 ? 2.0f : 1.5f) / Program.TickRate);
 
             if (this.Room.WaterEnvironment && !this.Capabilities.CanGoUnderwater)
             {
                 this.Health -= (float) (1.0f / Program.TickRate);
+            }
+
+            if (this.Hunger >= 80)
+            {
+                this.Health -= (5.0f / Program.TickRate) * (1.0f / (61.0f - (this.Hunger - 40.0f)));
             }
         }
     }

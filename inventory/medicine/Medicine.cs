@@ -11,6 +11,7 @@ namespace OOPAssignment011
         {
             this.HealthIncrease = healthIncrease;
             this.HungerIncrease = hungerIncrease;
+            this.MaxUses = 1;
         }
 
         public override bool Use(Pet pet)

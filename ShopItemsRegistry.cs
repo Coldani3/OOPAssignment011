@@ -36,6 +36,11 @@ namespace OOPAssignment011
             AddItem(new ToyBall());
             AddItem(new FoodSteak());
             AddItem(new Fan());
+            AddItem(new CheapMedicine());
+            AddItem(new AverageMedicine());
+            AddItem(new ExpensiveMedicine());
+            AddItem(new Heater());
+            AddItem(new AirConditioning());
         }
     }
 }

@@ -25,6 +25,8 @@ namespace OOPAssignment011
         public static char HorizontalVertJoiner = '┬';
         private static string finalMessage = "Bye!";
 
+        public static Random random = new Random();
+
         static void Main(string[] args)
         {
             ShopItemRegistry.RegisterAll();
@@ -34,9 +36,10 @@ namespace OOPAssignment011
             Console.CursorVisible = false;
             Task mainLoopTask = new Task(Tick);
             Room startRoom = new Room(25, 18);
-            Pet testPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true));
-            Pet testPet2 = new Pet("Bob, Destroyer of Worlds", 100000, 0, 2.0f, 100, new PetCapabilities(false, false, false));
+            Pet testPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true, false, true));
+            Pet testPet2 = new Pet("Bob, Destroyer of Worlds", 100000, 0, 2.0f, 100, new PetCapabilities(false, false, false, true, true));
             testPet.Room = startRoom;
+            testPet2.Room = startRoom;
             Player.Pets.AddPet(testPet);
             Player.Pets.AddPet(testPet2);
             Player.Pets.SelectedPet = testPet;
@@ -127,6 +130,8 @@ namespace OOPAssignment011
 
         public static void ChangeColorOnNegativeStat(float stat)
         {
+            Console.ForegroundColor = ConsoleColor.White;
+
             if (stat >= 30)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
@@ -143,7 +148,9 @@ namespace OOPAssignment011
 
         public static void ChangeColorOnPositiveStat(float stat)
         {
-            if (stat <= 90)
+            Console.ForegroundColor = ConsoleColor.White;
+
+            if (stat <= 80)
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
             }

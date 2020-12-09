@@ -13,6 +13,7 @@ namespace OOPAssignment011
         public override bool Execute(Pet pet)
         {
             Program.ChangePet(this.newPet);
+            Program.GotoMainMenu();
             return true;
         }
 
