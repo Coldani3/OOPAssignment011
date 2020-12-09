@@ -8,6 +8,8 @@ namespace OOPAssignment011
         //Items that alter the room over multiple turns should probably alter this
         public float AmbientTemperature { get; private set; }
         private static readonly float MinRatePerSecond = 0.02f;
+        public bool WaterEnvironment { get; protected set; } = false;
+        public bool SkyEnvironment { get; protected set; } = false;
 
         public Room(float ambientTemperature, float startingTemperature)
         {
@@ -49,6 +51,11 @@ namespace OOPAssignment011
             {
                 CurrentTemperature += by;
             }
+        }
+
+        public void ChangeAmbientTemperature(float by)
+        {
+            this.AmbientTemperature += by;
         }
     }
 }

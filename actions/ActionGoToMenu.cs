@@ -12,7 +12,7 @@ namespace OOPAssignment011
         {
             this.menu.ActivePet = pet;
             this.menu.CurrentPlayer = Program.Player;
-            Program.Menu = this.menu;
+            Program.ChangeMenu(this.menu);
             return true;
         }
     }

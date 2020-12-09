@@ -14,5 +14,10 @@ namespace OOPAssignment011
             pet.Hunger += 15;
             return true;
         }
+
+        public override bool IsCompatibleWith(Pet pet)
+        {
+            return pet.Capabilities.CanGoPlayBall;
+        }
     }
 }

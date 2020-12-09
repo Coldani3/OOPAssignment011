@@ -29,8 +29,8 @@ namespace OOPAssignment011
                 }
             }
         }
-        private int health;
-        public int Health { 
+        private float health;
+        public float Health { 
             get => this.health; 
             set 
             { 
@@ -48,7 +48,7 @@ namespace OOPAssignment011
                 }
             }
         }
-        public int MaxHealth { get; private set; }
+        public float MaxHealth { get; private set; }
         //Maxes out at 100, if it reaches 100 (most hunger) it takes damage. Rounded down whenever displayed.
         private float hunger;
         public float Hunger
@@ -92,6 +92,11 @@ namespace OOPAssignment011
         {
             this.Hunger += (HungerRate / Program.TickRate);
             this.Mood -= (float) (1.0f / Program.TickRate);
+
+            if (this.Room.WaterEnvironment && !this.Capabilities.CanGoUnderwater)
+            {
+                this.Health -= (float) (1.0f / Program.TickRate);
+            }
         }
     }
 }

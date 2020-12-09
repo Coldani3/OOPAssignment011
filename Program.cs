@@ -12,6 +12,7 @@ namespace OOPAssignment011
         public static Menu Menu;
         //Save so that we can switch back to this easily
         public static Menu MainMenu;
+        public static Menu PreviousMenu;
 
         public static char HorizontalLine = '─';
         public static char VerticalLine = '│';
@@ -204,6 +205,17 @@ namespace OOPAssignment011
             }
             Program.MainMenu.ActivePet = newPet;
             //pet.Owner.Pets.SelectedPet = newPet;
+        }
+
+        public static void ChangeMenu(Menu newMenu)
+        {
+            PreviousMenu = Menu;
+            Menu = newMenu;
+        }
+
+        public static void GoToPreviousMenu()
+        {
+            ChangeMenu(PreviousMenu);
         }
 
         public static void DebugMessage(string message, int delay)
