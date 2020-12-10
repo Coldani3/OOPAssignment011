@@ -95,9 +95,14 @@ namespace OOPAssignment011
 
         public void Update()
         {
+            if (Program.random.Next(0, 1000) < 100 / this.Mood)
+            {
+                this.IsSick = true;
+            } 
+
             float temperatureDifference = (float) Math.Abs(this.PreferredTemperature - this.Room.CurrentTemperature);
             this.Hunger += (HungerRate / Program.TickRate);
-            float MoodDecayRate = (this.Hunger >= 50 ? 2.0f : 1.5f) + (0.25f * (((temperatureDifference - 10) >= 0 ? (temperatureDifference - 10) : 0) / 8.0f));
+            float MoodDecayRate = (this.Hunger >= 50 ? 2.0f : 1.5f) + (0.25f * (((temperatureDifference - 10) >= 0 ? (temperatureDifference - 10) : 0) / 8.0f)) * (this.IsSick ? 2.0f : 1.0f);
             this.Mood -= (float) (MoodDecayRate / Program.TickRate);
 
             // if (this.Eating > 0)
