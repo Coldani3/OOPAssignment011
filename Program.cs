@@ -48,7 +48,7 @@ namespace OOPAssignment011
             Console.CursorVisible = false;
             Task mainLoopTask = new Task(Tick);
             
-            Pet testPet = new Pet("John Doe", 100, 0, 0.5f, 100, new PetCapabilities(true, true, true, false, true), 25);
+            Pet testPet = new Pet("Tomcat", 100, 0, 0.3f, 100, new PetCapabilities(false, true, false, true, false), 25);
             Pet testPet2 = new Pet("Bob, Destroyer of Worlds", 100000, 0, 2.0f, 100, new PetCapabilities(false, false, false, true, true), 25);
             testPet.Room = Rooms[0];
             testPet2.Room = Rooms[0];

@@ -78,6 +78,9 @@ namespace OOPAssignment011
         public Room Room;
         public Player Owner;
 
+        //Health left to restore, eaten for in seconds
+        public float Eating = 0.0f; 
+
         public Pet(string name, int maxHealth, float hunger, float hungerRate, float mood, PetCapabilities petCapabilities, int preferredTemperature)
         {
             this.MaxHealth = maxHealth;
@@ -96,6 +99,19 @@ namespace OOPAssignment011
             this.Hunger += (HungerRate / Program.TickRate);
             float MoodDecayRate = (this.Hunger >= 50 ? 2.0f : 1.5f) + (0.25f * (((temperatureDifference - 10) >= 0 ? (temperatureDifference - 10) : 0) / 8.0f));
             this.Mood -= (float) (MoodDecayRate / Program.TickRate);
+
+            // if (this.Eating > 0)
+            // {
+            //     float hungerToRestore = 10 / (this.Mood * this.Hunger);
+
+            //     if (hungerToRestore > this.Eating)
+            //     {
+            //         hungerToRestore = this.Eating;
+            //     }
+
+            //     this.Hunger -= hungerToRestore;
+            //     this.Eating -= hungerToRestore;
+            // }
 
             if (this.Room.WaterEnvironment && !this.Capabilities.CanGoUnderwater)
             {
@@ -119,6 +135,11 @@ namespace OOPAssignment011
                 Program.MessageUser($"Your pet {this.Name} died :[", 2000);
                 Program.Menu = new SelectPetMenu(this.Owner);
             }
+        }
+
+        public void Eat(Food toEat)
+        {
+
         }
     }
 }
