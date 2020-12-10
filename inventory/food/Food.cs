@@ -25,7 +25,7 @@ namespace OOPAssignment011
             base.Use(pet);
             pet.Health += this.HealthRestored;
             pet.Hunger -= this.HungerRestored;
-            pet.Eating += this.HungerRestored;
+            //pet.Eating += this.HungerRestored;
             return true;
         }
     }

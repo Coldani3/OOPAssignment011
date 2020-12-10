@@ -34,7 +34,7 @@ namespace OOPAssignment011
 
         public static Room[] Rooms = new Room[] {
             new Room("Normal Room", "A room of average temperature.", 25, 18),
-            new Room("Desert Room", "A really hot room.", 78, 68),
+            new Room("Desert Room", "A really hot room.", 50, 44),
             new Room("Freezer Room", "A very cold room.", -4, 2),
             new Room("Sky Room", "A room on a floating island.", 11, 14, false, true)
         };
@@ -49,7 +49,7 @@ namespace OOPAssignment011
             Task mainLoopTask = new Task(Tick);
             
             Pet testPet = new Pet("Tomcat", 100, 0, 0.3f, 100, new PetCapabilities(false, true, false, true, false), 25);
-            Pet testPet2 = new Pet("Bob, Destroyer of Worlds", 100000, 0, 2.0f, 100, new PetCapabilities(false, false, false, true, true), 25);
+            Pet testPet2 = new Pet("Clifford", 110, 0, 0.5f, 100, new PetCapabilities(true, true, false, true, false), 25);
             testPet.Room = Rooms[0];
             testPet2.Room = Rooms[0];
             Player.Pets.AddPet(testPet);
