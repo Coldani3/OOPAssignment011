@@ -52,6 +52,8 @@ namespace OOPAssignment011
             Pet testPet2 = new Pet("Clifford", 110, 0, 0.5f, 100, new PetCapabilities(true, true, false, true, false), 25);
             testPet.Room = Rooms[0];
             testPet2.Room = Rooms[0];
+            testPet.Owner = Player;
+            testPet2.Owner = Player;
             Player.Pets.AddPet(testPet);
             Player.Pets.AddPet(testPet2);
             Player.Pets.SelectedPet = testPet;
@@ -61,12 +63,6 @@ namespace OOPAssignment011
             Menu.ActivePet = Player.Pets.SelectedPet;
             Menu.CurrentPlayer = Player;
             // Player.PlayerInventory.AddItem(new ToyBall());
-            Player.PlayerInventory.AddItem(new FoodSteak());
-            Player.PlayerInventory.AddItem(new FoodSteak());
-            Player.PlayerInventory.AddItem(new FoodSteak());
-            Player.PlayerInventory.AddItem(new FoodSteak());
-            Player.PlayerInventory.AddItem(new ToyBall());
-            Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new FoodSteak());
             Player.PlayerInventory.AddItem(new FoodSteak());
@@ -119,7 +115,11 @@ namespace OOPAssignment011
                     
                     //Do stuff here
                     Menu.ActivePet.Update();
-                    Menu.ActivePet.Room.Update();
+                    
+                    if (Menu.ActivePet != null && Menu.ActivePet.Room != null)
+                    {
+                        Menu.ActivePet.Room.Update();
+                    }
                     Player.PlayerInventory.Coins++;
                     TicksPassed++;
                     

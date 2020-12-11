@@ -8,6 +8,7 @@ namespace OOPAssignment011
             this.AvailableActions.Add(new ActionGoToMenu("Food", "Shop for food for your pet!", new ItemShopMenu(ItemType.Food)));
             this.AvailableActions.Add(new ActionGoToMenu("Medicine", "Shop for medicine for your pet!", new ItemShopMenu(ItemType.Medicine)));
             this.AvailableActions.Add(new ActionGoToMenu("Other", "Shop for stuff that doesn't fit in the other categories for your pet!", new ItemShopMenu(ItemType.Other)));
+            this.AvailableActions.Add(new ActionGoToMenu("Pets", "Buy new pets!", new PetShopMenu()));
             this.AvailableActions.Add(new ActionGoToMainMenu());
         }
     }

@@ -19,6 +19,7 @@ namespace OOPAssignment011
             base.Use(pet);
             pet.Health += this.HealthIncrease;
             pet.Hunger += this.HungerIncrease;
+            pet.IsSick = false;
             
             return true;
         }

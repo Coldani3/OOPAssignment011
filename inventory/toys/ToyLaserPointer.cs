@@ -2,7 +2,7 @@ namespace OOPAssignment011
 {
     public class ToyLaserPointer : Toy
     {
-        public ToyLaserPointer() : base(50 * Program.TickRate, "Ball", "A bouncy ball your pet can play with! Can survive 10 uses.", 1)
+        public ToyLaserPointer() : base(50 * Program.TickRate, "Laser Pointer", "A laser pointer your pet can play with!", 1)
         {
 
         }

@@ -25,7 +25,7 @@ namespace OOPAssignment011
         {
             base.Display();
 
-            Console.SetCursorPosition(Console.WindowWidth - 14, 2);
+            Console.SetCursorPosition(Console.WindowWidth - 14, 9);
             Console.Write($"Coins: {Program.Player.PlayerInventory.Coins}");
         }
 

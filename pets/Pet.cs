@@ -89,7 +89,7 @@ namespace OOPAssignment011
 
         public void Update()
         {
-            if (Program.random.Next(0, 1000) < 100 / this.Mood)
+            if ((Program.random.Next(0, 1000) < 100 / this.Mood) && this.Hunger > 70)
             {
                 this.IsSick = true;
             } 
@@ -114,9 +114,18 @@ namespace OOPAssignment011
                 this.Health -= (5.0f / Program.TickRate) * (1.0f / (61.0f - (this.Hunger - 40.0f)));
             }
 
+            if (this.IsSick)
+            {
+                this.Health -= 0.5f / Program.TickRate;
+            }
+
             if (Math.Floor(this.Health) <= 0)
             {
-                this.Owner.Pets.RemovePet(this);
+                if (this.Owner.Pets.Pets.Contains(this))
+                {
+                    this.Owner.Pets.RemovePet(this);
+                }
+
                 Console.Clear();
                 Program.MessageUser($"Your pet {this.Name} died :[", 2000);
                 Program.Menu = new SelectPetMenu(this.Owner);
